@@ -1,73 +1,193 @@
-// script.js — handles contact form submission and small UI bits
+// script.js — handles contact form submission, mobile menu toggle, and UI interactions
 
 document.addEventListener('DOMContentLoaded', () => {
-  // set year in footer
+  // Set year in footer
   const y = new Date().getFullYear();
-  document.getElementById('year').textContent = y;
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = y;
+  }
 
-  // contact form
-  const form = document.getElementById('contact-form');
-  const statusEl = document.getElementById('form-status');
+  // ===== HEADER SCROLL FADE EFFECT =====
+  const siteHeader = document.querySelector('.site-header');
+  
+  function updateHeaderOpacity() {
+    // Get the scroll position (0 at top)
+    const scrollTop = window.scrollY;
+    
+    // Define fade range: starts fading from 0px, fully faded by 500px
+    const fadeStart = 0;
+    const fadeEnd = 500;
+    
+    // Calculate opacity (1 = fully visible at top, fades as you scroll)
+    let opacity;
+    
+    if (scrollTop <= fadeStart) {
+      // At top: full opacity
+      opacity = 1;
+    } else if (scrollTop >= fadeEnd) {
+      // After fade range: stay at minimum opacity (but keep header visible)
+      opacity = 1; // Keep full opacity throughout all sections
+    } else {
+      // In fade range: smooth transition
+      opacity = 1 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart)) * 0.5;
+    }
+    
+    // Apply opacity to the entire header
+    siteHeader.style.opacity = opacity;
+  }
 
-  // Replace this with your Formspree endpoint OR configure Netlify Forms / EmailJS
-  // Example Formspree action: https://formspree.io/f/your_form_id
-  // When using Formspree you can enable an auto-reply in the Formspree dashboard to send an automated email to the submitter (using the _replyto field).
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  // Throttle scroll events for better performance
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+      window.cancelAnimationFrame(scrollTimeout);
+    }
+    scrollTimeout = window.requestAnimationFrame(() => {
+      updateHeaderOpacity();
+    });
+  });
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusEl.textContent = '';
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
+  // ===== MOBILE MENU TOGGLE =====
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const navBack = document.getElementById('nav-back');
+  const navLinks = navMenu ? navMenu.querySelectorAll('a') : [];
+  const body = document.body;
 
-    // basic client-side validation
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+  // Helper function to close menu
+  function closeMenu() {
+    if (menuToggle) menuToggle.classList.remove('active');
+    if (navMenu) navMenu.classList.remove('active');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    // Allow scrolling again
+    body.style.overflow = 'auto';
+  }
 
-    if (!name || !email || !message) {
-      statusEl.textContent = 'Please complete all fields.';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-      return;
+  // Helper function to open menu
+  function openMenu() {
+    if (menuToggle) menuToggle.classList.add('active');
+    if (navMenu) navMenu.classList.add('active');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+    // Prevent scrolling when menu is open
+    body.style.overflow = 'hidden';
+  }
+
+  if (menuToggle && navMenu) {
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (menuToggle.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close menu on back button click
+    if (navBack) {
+      navBack.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenu();
+      });
     }
 
-    // Build form data
-    const fd = new FormData();
-    fd.append('name', name);
-    fd.append('email', email);
-    fd.append('message', message);
-    fd.append('_replyto', email); // Formspree: used for automated reply to visitor
-    fd.append('_subject', 'Zest‑X site contact');
-
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: fd,
-        headers: {
-          'Accept': 'application/json'
-        }
+    // Close menu when a navigation link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
       });
+    });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Network response was not ok');
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Prevent menu from closing when clicking inside nav
+    navMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on window resize (when crossing responsive breakpoint)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+  }
+
+  // ===== CONTACT FORM =====
+  const form = document.getElementById('contact-form');
+  if (form) {
+    const statusEl = document.getElementById('form-status');
+
+    // Replace this with your Formspree endpoint OR configure Netlify Forms / EmailJS
+    // Example Formspree action: https://formspree.io/f/your_form_id
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvzrdbll';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      // Basic client-side validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        statusEl.textContent = 'Please complete all fields.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        return;
       }
 
-      // Success
-      statusEl.style.color = 'var(--muted)';
-      statusEl.textContent = 'Thanks — your message has been sent. We’ll reply shortly.';
-      form.reset();
+      // Build form data
+      const fd = new FormData();
+      fd.append('name', name);
+      fd.append('email', email);
+      fd.append('message', message);
+      fd.append('_replyto', email);
+      fd.append('_subject', 'Atom site contact');
 
-      // Optional: if you want to send the visitor an immediate on-site confirmation, do it here.
-    } catch (err) {
-      console.error('Form submit error', err);
-      statusEl.style.color = '#ffb3b3';
-      statusEl.textContent = 'Sorry — something went wrong. Please try again or email hello@zest-x.com';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    }
-  });
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: fd,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || 'Network response was not ok');
+        }
+
+        // Success
+        statusEl.style.color = 'var(--muted)';
+        statusEl.textContent = 'Thanks — your message has been sent. We will reply shortly.';
+        form.reset();
+      } catch (err) {
+        console.error('Form submit error', err);
+        statusEl.style.color = '#ffb3b3';
+        statusEl.textContent = 'Sorry — something went wrong. Please try again or email hello@atom.com';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  }
 });

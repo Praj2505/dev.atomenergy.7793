@@ -13,20 +13,29 @@
  <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <!-- Logo mark (zX) - inline SVG for crisp rendering -->
-      <a href="#home" class="logo-link" aria-label="Atom‑X home">
-        <a href="#home" class="wordmark-link" aria-label="Atom">
+      <a href="index.html" class="logo-link" aria-label="Atom home">
         <img src="logo-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
       </a>
-      </a>
-
-      <!-- Atom wordmark as image (image-form). Replace the src with your real image file -->
-      <a href="#home" class="wordmark-link" aria-label="Atom">
+      <a href="index.html" class="wordmark-link" aria-label="Atom">
         <img src="name-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
       </a>
     </div>
 
-    <nav class="nav">
+    <!-- Hamburger Menu Button -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger">
+      </span>
+    </button>
+
+    <nav class="nav" id="nav-menu">
+      <!-- Back Button for Mobile -->
+      <button class="nav-back" id="nav-back" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back
+      </button>
+      
       <a href="#why">Why</a>
       <a href="#benefits">Benefits</a>
       <a href="contact-form.html">Contact</a>
