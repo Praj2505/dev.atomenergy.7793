@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Atom — Pure Focus. Zero Crash.</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Atom — Natural zero-sugar caffeinated energy drink. Clean energy for high performers.">
+</head>
+<body>
+ <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <!-- Logo mark (zX) - inline SVG for crisp rendering -->
+      <a href="index.html" class="logo-link" aria-label="Atom‑X home">
+        <a href="index.html" class="wordmark-link" aria-label="Atom">
+        <img src="logo-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
+      </a>
+      </a>
+
+      <!-- Atom wordmark as image (image-form). Replace the src with your real image file -->
+      <a href="index.html" class="wordmark-link" aria-label="Atom">
+        <img src="name-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
+      </a>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html#why">Why</a>
+      <a href="index.html#benefits">Benefits</a>
+      <a href="contact-form.html">Contact</a>
+      <a href="#shop">Shop</a>
+    </nav>
+  </div>
+</header>
+
+    <!-- CONTACT -->
+    <section class="section-contact" id="contact" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-contact-title">Contact Us</h2>
+        <p class="section-contact-sub">Questions, wholesale, or partnership inquiries — send us a message.</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <!-- NOTE: configure your Formspree form ID below, or use Netlify/EmailJS. See README notes in JS. -->
+          <input type="hidden" name="_subject" value="Contact Team Atom">
+          <label class="field">
+            <span class="label-text">Name</span>
+            <input type="text" name="name" id="name" required placeholder="Your name">
+          </label>
+
+          <label class="field">
+            <span class="label-text">Email</span>
+            <input type="email" name="email" id="email" required placeholder="you@example.com">
+          </label>
+
+          <label class="field">
+            <span class="label-text">Message</span>
+            <textarea name="message" id="message" rows="5" required placeholder="How can we help?"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="brand">
+      <!-- Logo mark (zX) - inline SVG for crisp rendering -->
+      <a href="index.html" class="logo-link" aria-label="Atom home">
+        <a href="index.html" class="wordmark-link" aria-label="Atom">
+        <img src="logo-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
+      </a>
+      </a>
+
+      <!-- Atom wordmark as image (image-form). Replace the src with your real image file -->
+      <a href="index.html" class="wordmark-link" aria-label="Atom">
+        <img src="name-standalone.png" alt="Atom wordmark" class="brand-wordmark" />
+      </a>
+    </div>
+        <p class="muted">Clean energy for high performers — © <span id="year"></span> The Atom Energy</p>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="0.5"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="TikTok" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 3v9a3 3 0 1 0 3 3 6 6 0 0 0 6-6V3"/></svg></a>
+          <a class="social" href="#" aria-label="Twitter" title="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 16 3a4.48 4.48 0 0 0-4.47 4.47c0 .35.04.7.12 1.03A12.8 12.8 0 0 1 3 4.7 4.48 4.48 0 0 0 4.47 11 4.48 4.48 0 0 1 2.8 10.7v.05A4.48 4.48 0 0 0 4.47 15.8 4.42 4.42 0 0 1 2 15.3c.33 1.7 1.9 2.95 3.6 3.0A9 9 0 0 1 1 19.54 12.7 12.7 0 0 0 7 21"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <a class="whatsapp-fab" id="whatsapp" href="https://wa.me/7837227793?text=Hi%20Atom%20team%21%20I%20have%20a%20question" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M20.5 3.5A11 11 0 1 0 12 23a11 11 0 0 0 8.5-19.5zM12 20c-1.4 0-2.8-.3-4-1L6 19l1-2c-.6-1-1-2.2-1-3.5 0-4 3-7 7-7s7 3 7 7-3 7-7 7zm3-9.5c-.1-.3-.4-.5-.8-.5-.3 0-.6.1-.8.3-.3.3-.6.6-.9.9-.3.3-.6.6-1 .8-.2.1-.4.2-.6.2-.2 0-.4 0-.6-.1-.4-.1-1.4-.4-2.1-1.2-.7-.7-1.1-1.6-1.2-2.1-.1-.2-.1-.4-.1-.6 0-.2.1-.4.2-.6.2-.5.5-.9.8-1.2.3-.3.6-.6.8-.9.2-.2.3-.5.3-.8 0-.4-.2-.8-.5-.9-.4-.1-1.1-.1-1.8.3-.8.4-1.5 1.1-2 1.9-.6 1-1 2.2-1 3.4 0 .8.1 1.6.5 2.3.4.8 1 1.6 1.8 2.3.8.7 1.7 1.2 2.6 1.5.9.3 1.9.4 2.8.3 1.2-.2 2.2-.7 3.1-1.5 1-1 1.5-2.3 1.5-3.6 0-1.7-.6-3.3-1.7-4.5-.6-.6-1.3-1-2.1-1"/></svg>
+  </a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
