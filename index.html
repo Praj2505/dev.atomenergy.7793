@@ -1,69 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atom Energy</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-    }
-
-    header {
-      background-color: #000;
-      padding: 20px 0;
-      font-size: 2em;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .loading-section {
-      padding: 80px 20px;
-    }
-
-    .loading-title {
-      font-size: 3em;
-      margin-bottom: 40px;
-    }
-
-    .loader {
-      display: inline-block;
-      width: 80px;
-      height: 80px;
-    }
-
-    .loader:after {
-      content: " ";
-      display: block;
-      width: 64px;
-      height: 64px;
-      margin: 8px;
-      border-radius: 50%;
-      border: 6px solid #0f0;
-      border-color: #0f0 transparent #0f0 transparent;
-      animation: spin 1.2s linear infinite;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zest‑X — Pure Focus. Zero Crash.</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Zest‑X — Natural zero-sugar caffeinated energy drink. Clean energy for high performers.">
 </head>
 <body>
-  <header>Atom Energy</header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">ZX</div>
+        <span class="brand-name">Zest‑X</span>
+      </div>
+      <nav class="nav">
+        <a href="#why">Why</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-ghost" href="#shop">Shop</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="loading-section">
-    <div class="loading-title">Energy Loading</div>
-    <div class="loader"></div>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home" role="region" aria-label="Hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 class="hero-title">Pure Focus. Zero Crash.</h1>
+          <p class="hero-sub">Clean, plant-based caffeine and nootropics for high performers. Zero sugar — all performance.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" id="shop-btn" href="#shop">Shop Now</a>
+            <a class="btn btn-outline" href="#benefits">Learn More</a>
+          </div>
+          <ul class="trust-list" aria-hidden="true">
+            <li>Zero Sugar</li>
+            <li>Natural Caffeine</li>
+            <li>Jitter-free Focus</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Placeholder can SVG render -->
+          <div class="can-wrap" role="img" aria-label="Zest-X can render">
+            <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" class="can-svg">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#BFFF00"/>
+                  <stop offset="60%" stop-color="#A8FF00"/>
+                  <stop offset="100%" stop-color="#8EF000"/>
+                </linearGradient>
+                <filter id="glass" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="b"/>
+                  <feBlend in="SourceGraphic" in2="b"/>
+                </filter>
+              </defs>
+
+              <!-- can body -->
+              <rect x="30" y="20" rx="18" ry="18" width="140" height="360" fill="#121212"/>
+              <!-- metallic band -->
+              <rect x="30" y="20" rx="18" ry="18" width="140" height="58" fill="rgba(255,255,255,0.03)"/>
+              <!-- branding -->
+              <g transform="translate(60,120)">
+                <rect x="-8" y="-8" width="96" height="64" rx="12" fill="url(#g1)" opacity="0.95" />
+                <text x="40" y="30" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="28" fill="#08110A">Z X</text>
+              </g>
+              <!-- subtle highlight -->
+              <path d="M65 30 C80 10,120 10,135 30 L145 40 L150 380 C90 400,60 400,50 380 Z" fill="white" opacity="0.03"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section" id="benefits" aria-label="Product Benefits">
+      <div class="container">
+        <h2 class="section-title">Benefits</h2>
+        <p class="section-sub">Designed for performance — ingredients you can trust.</p>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🍃</div>
+            <h3>Natural Caffeine</h3>
+            <p>Sourced from <strong>Green Tea</strong> &amp; <strong>Guarana</strong> for clean, sustained energy.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">0️⃣</div>
+            <h3>Zero Sugar</h3>
+            <p>Sweetened with <strong>Monk Fruit</strong>. No aspartame, ever — zero crash, real taste.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧠</div>
+            <h3>Nootropic Blend</h3>
+            <p>Includes <strong>L‑Theanine</strong> to smooth caffeine and promote jitter‑free focus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section alt" id="why" aria-label="Why Zest-X">
+      <div class="container why-inner">
+        <div class="why-copy">
+          <h2 class="section-title">Why clean energy?</h2>
+          <p class="large">
+            The era of synthetic stimulants is over. Zest‑X is a shift from high‑sugar, harsh stimulants to plant‑based fuel that sharpens performance without the crash. We blend natural caffeine sources with targeted nootropics so you move from reactive spikes to sustainable focus.
+          </p>
+          <a class="btn btn-outline" href="#shop">Shop Clean Energy</a>
+        </div>
+
+        <div class="why-stats" aria-hidden="true">
+          <div class="stat">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Sugar</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Plant‑sourced caffeine</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-sub">Questions, wholesale, or partnership inquiries — send us a message.</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <!-- NOTE: configure your Formspree form ID below, or use Netlify/EmailJS. See README notes in JS. -->
+          <input type="hidden" name="_subject" value="Zest‑X site contact">
+          <label class="field">
+            <span class="label-text">Name</span>
+            <input type="text" name="name" id="name" required placeholder="Your name">
+          </label>
+
+          <label class="field">
+            <span class="label-text">Email</span>
+            <input type="email" name="email" id="email" required placeholder="you@example.com">
+          </label>
+
+          <label class="field">
+            <span class="label-text">Message</span>
+            <textarea name="message" id="message" rows="5" required placeholder="How can we help?"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="brand small">
+          <div class="logo-mark" aria-hidden="true">ZX</div>
+          <span class="brand-name">Zest‑X</span>
+        </div>
+        <p class="muted">Clean energy for high performers — © <span id="year"></span> Zest‑X</p>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram" title="Instagram">
+            <!-- Instagram SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="0.5"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="TikTok" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 3v9a3 3 0 1 0 3 3 6 6 0 0 0 6-6V3"/></svg></a>
+          <a class="social" href="#" aria-label="Twitter" title="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 16 3a4.48 4.48 0 0 0-4.47 4.47c0 .35.04.7.12 1.03A12.8 12.8 0 0 1 3 4.7 4.48 4.48 0 0 0 4.47 11 4.48 4.48 0 0 1 2.8 10.7v.05A4.48 4.48 0 0 0 4.47 15.8 4.42 4.42 0 0 1 2 15.3c.33 1.7 1.9 2.95 3.6 3.0A9 9 0 0 1 1 19.54 12.7 12.7 0 0 0 7 21"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <a class="whatsapp-fab" id="whatsapp" href="https://wa.me/1234567890?text=Hi%20Zest-X%20team%21%20I%20have%20a%20question" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M20.5 3.5A11 11 0 1 0 12 23a11 11 0 0 0 8.5-19.5zM12 20c-1.4 0-2.8-.3-4-1L6 19l1-2c-.6-1-1-2.2-1-3.5 0-4 3-7 7-7s7 3 7 7-3 7-7 7zm3-9.5c-.1-.3-.4-.5-.8-.5-.3 0-.6.1-.8.3-.3.3-.6.6-.9.9-.3.3-.6.6-1 .8-.2.1-.4.2-.6.2-.2 0-.4 0-.6-.1-.4-.1-1.4-.4-2.1-1.2-.7-.7-1.1-1.6-1.2-2.1-.1-.2-.1-.4-.1-.6 0-.2.1-.4.2-.6.2-.5.5-.9.8-1.2.3-.3.6-.6.8-.9.2-.2.3-.5.3-.8 0-.4-.2-.8-.5-.9-.4-.1-1.1-.1-1.8.3-.8.4-1.5 1.1-2 1.9-.6 1-1 2.2-1 3.4 0 .8.1 1.6.5 2.3.4.8 1 1.6 1.8 2.3.8.7 1.7 1.2 2.6 1.5.9.3 1.9.4 2.8.3 1.2-.2 2.2-.7 3.1-1.5 1-1 1.5-2.3 1.5-3.6 0-1.7-.6-3.3-1.7-4.5-.6-.6-1.3-1-2.1-1"/></svg>
+  </a>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
